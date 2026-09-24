@@ -1,0 +1,60 @@
+# Felpudos Argentinos — landing
+
+Landing de una sola página para **felpudosargentinos.com**: fábrica de felpudos
+personalizados con el logo del cliente.
+
+## Estado
+
+Maqueta visual v1, pendiente de aprobación. Los textos, el logo y las imágenes de
+producto son propios; las fotos de trabajos reales las provee el cliente y se
+reemplazan sobre los espacios marcados en la sección *Rubros*.
+
+## Estructura
+
+| Sección | Contenido |
+|---|---|
+| Hero | Propuesta de valor, CTA a WhatsApp, felpudo destacado |
+| 01 Productos | Tres calidades: impreso (PVC 8 mm), calado (PVC 12 mm), fibra atrapa-polvo |
+| 02 Rubros | 12 rubros + galería para fotos reales |
+| 03 Nosotros | Diferenciales de fábrica + métricas |
+| 04 Contacto | Datos directos + formulario |
+
+## Archivos
+
+```
+index.html               página completa
+assets/css/style.css     estilos (un solo archivo, con variables de color)
+assets/js/main.js        menú móvil, animaciones al hacer scroll, formulario
+assets/fonts/            Archivo + Manrope autoalojadas (sin llamadas externas)
+assets/img/              logo, favicon y renders de producto
+tools/gen_mats.py        genera los renders de felpudo (Pillow)
+tools/shots.py           capturas de control (Playwright)
+```
+
+## Datos a reemplazar antes de publicar
+
+- Número de WhatsApp / teléfono: hoy figura `5491100000000` como marcador.
+- Correo de contacto: `ventas@felpudosargentinos.com`.
+- Enlaces de Instagram y Facebook en el pie.
+- Métricas de la sección *Nosotros* (años, cantidad de comercios, plazos).
+- El formulario hoy abre WhatsApp con los datos cargados. Al subirlo al hosting se
+  cambia por envío por correo desde el servidor.
+
+## Probar en local
+
+```sh
+python3 -m http.server 8931
+# http://127.0.0.1:8931/
+```
+
+Es HTML estático: se sube por FTP a `public_html` y funciona. Sin base de datos y
+sin dependencias externas.
+
+## Paleta
+
+| | |
+|---|---|
+| Tinta (goma) | `#12171C` |
+| Hueso (papel) | `#F4F1EA` |
+| Celeste | `#6FB3E0` / `#3D8CC4` |
+| WhatsApp | `#25D366` |

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 132" width="520" height="132" role="img" aria-label="Felpudos Argentinos">
+  <defs>
+    <clipPath id="matClip"><rect x="8" y="14" width="104" height="104" rx="16"/></clipPath>
+  </defs>
+
+  <!-- MARCA: felpudo visto desde arriba, con ranuras y borde celeste -->
+  <g>
+    <rect x="8" y="14" width="104" height="104" rx="16" fill="#12171C"/>
+    <g clip-path="url(#matClip)" opacity=".5">
+      <g fill="none" stroke="#2C3540" stroke-width="3">
+        <path d="M8 34h104M8 50h104M8 66h104M8 82h104M8 98h104"/>
+      </g>
+    </g>
+    <rect x="18" y="24" width="84" height="84" rx="9" fill="none" stroke="#6FB3E0" stroke-width="4"/>
+    <!-- monograma FA -->
+    <g fill="#F4F1EA">
+      <!-- F -->
+      <rect x="32" y="42" width="9" height="48" rx="2"/>
+      <rect x="32" y="42" width="26" height="9" rx="2"/>
+      <rect x="32" y="61" width="20" height="9" rx="2"/>
+      <!-- A -->
+      <path d="M67 90 80.5 42h9L103 90h-9.6l-2.6-10H79.2l-2.6 10H67Zm14.4-18.6h7.2L85 57.6Z"/>
+    </g>
+  </g>
+
+  <!-- LOGOTIPO -->
+  <g>
+    <text x="134" y="62"
+          font-family="Archivo, 'Arial Narrow', sans-serif" font-size="43" font-weight="800"
+          letter-spacing="1.5" fill="#12171C" class="lg-word">FELPUDOS</text>
+    <text x="136" y="99"
+          font-family="Archivo, 'Arial Narrow', sans-serif" font-size="25.5" font-weight="500"
+          letter-spacing="10.4" fill="#4A5561" class="lg-sub">ARGENTINOS</text>
+    <rect x="134" y="72" width="40" height="4" rx="2" fill="#6FB3E0"/>
+  </g>
+</svg>
