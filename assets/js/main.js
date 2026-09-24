@@ -54,7 +54,7 @@
         '. Me interesa: ' + (d.get('producto') || '') +
         (d.get('mensaje') ? '. ' + d.get('mensaje') : '') +
         (d.get('tel') ? '. Mi WhatsApp: ' + d.get('tel') : '');
-      window.open('https://wa.me/5491100000000?text=' + encodeURIComponent(txt), '_blank', 'noopener');
+      window.open('https://wa.me/5491164663605?text=' + encodeURIComponent(txt), '_blank', 'noopener');
     });
   }
 })();

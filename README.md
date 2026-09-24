@@ -14,7 +14,7 @@ reemplazan sobre los espacios marcados en la sección *Rubros*.
 | Sección | Contenido |
 |---|---|
 | Hero | Propuesta de valor, CTA a WhatsApp, felpudo destacado |
-| 01 Productos | Tres calidades: impreso (PVC 8 mm), calado (PVC 12 mm), fibra atrapa-polvo |
+| 01 Productos | Los seis: con y sin logo, días de lluvia, antideslizantes, antifatiga, vinílicos, extra duty tipo 3M |
 | 02 Rubros | 12 rubros + galería para fotos reales |
 | 03 Nosotros | Diferenciales de fábrica + métricas |
 | 04 Contacto | Datos directos + formulario |
@@ -26,14 +26,14 @@ index.html               página completa
 assets/css/style.css     estilos (un solo archivo, con variables de color)
 assets/js/main.js        menú móvil, animaciones al hacer scroll, formulario
 assets/fonts/            Archivo + Manrope autoalojadas (sin llamadas externas)
-assets/img/              logo, favicon y renders de producto
+assets/img/              logo, favicon y renders de los seis productos
 tools/gen_mats.py        genera los renders de felpudo (Pillow)
 tools/shots.py           capturas de control (Playwright)
 ```
 
 ## Datos a reemplazar antes de publicar
 
-- Número de WhatsApp / teléfono: hoy figura `5491100000000` como marcador.
+- WhatsApp: ya es el real, `+54 9 11 6466 3605`.
 - Correo de contacto: `ventas@felpudosargentinos.com`.
 - Enlaces de Instagram y Facebook en el pie.
 - Métricas de la sección *Nosotros* (años, cantidad de comercios, plazos).

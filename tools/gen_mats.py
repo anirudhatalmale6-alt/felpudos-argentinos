@@ -92,11 +92,13 @@ def finish(mat, w, h, radius=22, shadow=True):
 
 
 # ---------------------------------------------------------------- productos
-def mat_impreso(w=900, h=620):
-    """PVC 8 mm con logo impreso a color."""
+# Los seis productos que vende el cliente. Cada uno tiene una superficie
+# distinta para que se distingan de un vistazo en la grilla.
+
+def p_logo(w=900, h=620):
+    """Felpudos con y sin logo — PVC liso con el logo impreso."""
     mat = base_mat(w, h, (26, 31, 38))
     d = ImageDraw.Draw(mat)
-    # superficie: micro-relieve de rayas finas
     for y in range(0, h, 6):
         d.line([(0, y), (w, y)], fill=(34, 40, 48), width=1)
     add_border(d, w, h, 34, CELESTE, 8, 20)
@@ -106,36 +108,100 @@ def mat_impreso(w=900, h=620):
     return finish(mat, w, h)
 
 
-def mat_calado(w=900, h=620):
-    """PVC 12 mm con logo calado (troquelado) y base contrastante."""
-    mat = base_mat(w, h, (22, 26, 32))
-    d = ImageDraw.Draw(mat)
-    # celdas caladas tipico del felpudo perforado
-    step, pad = 34, 40
-    for y in range(pad, h - pad, step):
-        for x in range(pad, w - pad, step):
-            d.rounded_rectangle([x, y, x + step - 12, y + step - 12], 4,
-                                fill=(13, 16, 20), outline=(38, 45, 54), width=1)
-    # ventana central donde va el logo calado
-    bx0, by0, bx1, by1 = int(w * .16), int(h * .3), int(w * .84), int(h * .7)
-    d.rounded_rectangle([bx0, by0, bx1, by1], 14, fill=(28, 34, 41))
-    brand(d, w, int(h * 0.36), scale=1.2, color=CELESTE, accent=BONE)
-    add_border(d, w, h, 24, (58, 68, 80), 6, 18)
+def p_lluvia(w=900, h=620):
+    """Felpudos para dias de lluvia — fibra absorbente con gotas."""
+    mat = base_mat(w, h, (34, 42, 52))
+    tex = noise_layer((w, h), amount=54, blur=0.4).convert("RGB")
+    mat = Image.blend(mat, tex, 0.44)
+    d = ImageDraw.Draw(mat, "RGBA")
+    # gotas de agua sobre la superficie
+    for _ in range(90):
+        x, y = random.randint(28, w - 28), random.randint(28, h - 28)
+        r = random.randint(4, 11)
+        d.ellipse([x - r, y - r, x + r, y + r], fill=(150, 200, 236, 40))
+        d.arc([x - r, y - r, x + r, y + r], 200, 330, fill=(198, 226, 245, 110), width=2)
+    d.rounded_rectangle([0, 0, w - 1, h - 1], 22, outline=(22, 28, 35), width=26)
+    brand(d, w, int(h * 0.36), scale=1.3, color=BONE, accent=CELESTE)
+    f = font(20, weight=600, width=100)
+    centered(d, "D Í A S   D E   L L U V I A", f, w // 2, int(h * 0.74), (176, 200, 220))
     return finish(mat, w, h)
 
 
-def mat_fibra(w=900, h=620):
-    """Fibra sintetica atrapa-polvo con logo inyectado."""
-    mat = base_mat(w, h, (38, 44, 52))
-    # pelo de fibra: ruido grueso direccional
-    tex = noise_layer((w, h), amount=60, blur=0.35).convert("RGB")
-    mat = Image.blend(mat, tex, 0.5)
-    mat = mat.filter(ImageFilter.GaussianBlur(0.35))
+def p_antideslizante(w=900, h=620):
+    """Alfombras antideslizantes — goma nervada de agarre."""
+    mat = base_mat(w, h, (23, 28, 34))
     d = ImageDraw.Draw(mat)
-    d.rounded_rectangle([0, 0, w - 1, h - 1], 22, outline=(20, 24, 29), width=26)
-    brand(d, w, int(h * 0.36), scale=1.3, color=BONE, accent=CELESTE)
-    f = font(20, weight=600, width=100)
-    centered(d, "ATRAPA POLVO Y HUMEDAD", f, w // 2, int(h * 0.74), (176, 188, 200))
+    # nervaduras: relieve marcado con luz arriba y sombra abajo
+    for y in range(24, h - 24, 16):
+        d.line([(24, y), (w - 24, y)], fill=(46, 55, 66), width=6)
+        d.line([(24, y + 4), (w - 24, y + 4)], fill=(14, 18, 23), width=3)
+    # franja de seguridad en los bordes
+    for yy in (16, h - 26):
+        d.rectangle([16, yy, w - 16, yy + 10], fill=CELESTE)
+    box = [int(w * .17), int(h * .28), int(w * .83), int(h * .72)]
+    d.rounded_rectangle(box, 12, fill=(26, 32, 39))
+    brand(d, w, int(h * 0.36), scale=1.25, color=BONE, accent=CELESTE)
+    return finish(mat, w, h)
+
+
+def p_antifatiga(w=900, h=620):
+    """Tapetes antifatiga — espuma gruesa con borde biselado y relieve rombo."""
+    mat = base_mat(w, h, (30, 36, 44))
+    d = ImageDraw.Draw(mat)
+    # bisel perimetral (el canto inclinado tipico del antifatiga)
+    for i, c in enumerate([(52, 62, 74), (44, 53, 64), (37, 45, 55)]):
+        o = 10 + i * 9
+        d.rounded_rectangle([o, o, w - o, h - o], 18, outline=c, width=9)
+    # relieve de rombos
+    step = 46
+    for y in range(52, h - 40, step):
+        for x in range(52, w - 40, step):
+            d.polygon([(x, y - 14), (x + 16, y), (x, y + 14), (x - 16, y)],
+                      outline=(56, 67, 80))
+    box = [int(w * .18), int(h * .3), int(w * .82), int(h * .7)]
+    d.rounded_rectangle(box, 12, fill=(30, 36, 44))
+    brand(d, w, int(h * 0.36), scale=1.25, color=BONE, accent=CELESTE)
+    f = font(19, weight=600, width=100)
+    centered(d, "C O N F O R T   D E   P I E", f, w // 2, int(h * 0.735), (150, 163, 176))
+    return finish(mat, w, h)
+
+
+def p_vinilico(w=900, h=620):
+    """Felpudos vinilicos — maraña de hilo de vinilo (tipo espagueti)."""
+    mat = base_mat(w, h, (21, 26, 32))
+    d = ImageDraw.Draw(mat)
+    # bucles de vinilo entrelazados
+    for _ in range(950):
+        x, y = random.randint(18, w - 18), random.randint(18, h - 18)
+        r = random.randint(9, 19)
+        a = random.randint(0, 359)
+        tone = random.choice([(48, 58, 70), (39, 48, 58), (58, 70, 84)])
+        d.arc([x - r, y - r, x + r, y + r], a, a + random.randint(140, 260),
+              fill=tone, width=3)
+    box = [int(w * .17), int(h * .29), int(w * .83), int(h * .71)]
+    d.rounded_rectangle(box, 12, fill=(24, 30, 37))
+    brand(d, w, int(h * 0.36), scale=1.25, color=CELESTE, accent=BONE)
+    add_border(d, w, h, 22, (54, 64, 76), 6, 18)
+    return finish(mat, w, h)
+
+
+def p_extraduty(w=900, h=620):
+    """Alfombras extra duty tipo 3M — rizo denso de alto transito."""
+    mat = base_mat(w, h, (19, 23, 29))
+    d = ImageDraw.Draw(mat)
+    # rizo cerrado: puntos densos en tresbolillo
+    step = 13
+    for row, y in enumerate(range(20, h - 14, step)):
+        off = (step // 2) if row % 2 else 0
+        for x in range(20 + off, w - 14, step):
+            t = random.choice([(40, 48, 58), (33, 40, 49), (48, 58, 70)])
+            d.ellipse([x, y, x + 6, y + 6], fill=t)
+    box = [int(w * .16), int(h * .29), int(w * .84), int(h * .71)]
+    d.rounded_rectangle(box, 12, fill=(22, 27, 34))
+    brand(d, w, int(h * 0.36), scale=1.28, color=BONE, accent=CELESTE)
+    f = font(19, weight=600, width=100)
+    centered(d, "A L T O   T R Á N S I T O", f, w // 2, int(h * 0.735), (150, 163, 176))
+    d.rounded_rectangle([0, 0, w - 1, h - 1], 22, outline=(13, 16, 20), width=18)
     return finish(mat, w, h)
 
 
@@ -156,13 +222,15 @@ def mat_hero(w=1180, h=760):
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)
     jobs = {
-        "producto-impreso.png": mat_impreso,
-        "producto-calado.png": mat_calado,
-        "producto-fibra.png": mat_fibra,
+        "prod-logo.png": p_logo,
+        "prod-lluvia.png": p_lluvia,
+        "prod-antideslizante.png": p_antideslizante,
+        "prod-antifatiga.png": p_antifatiga,
+        "prod-vinilico.png": p_vinilico,
+        "prod-extraduty.png": p_extraduty,
         "hero-felpudo.png": mat_hero,
     }
     for name, fn in jobs.items():
         img = fn()
-        path = os.path.join(OUT, name)
-        img.save(path)
+        img.save(os.path.join(OUT, name))
         print(f"{name}  {img.size[0]}x{img.size[1]}")
