@@ -149,7 +149,7 @@ def mat_hero(w=1180, h=760):
     add_border(d, w, h, 62, (46, 55, 65), 3, 16)
     brand(d, w, int(h * 0.34), scale=1.85)
     f = font(25, weight=600, width=100)
-    centered(d, "T U   L O G O   A C A", f, w // 2, int(h * 0.735), (140, 154, 168))
+    centered(d, "T U   L O G O   A C Á", f, w // 2, int(h * 0.735), (140, 154, 168))
     return finish(mat, w, h)
 
 
