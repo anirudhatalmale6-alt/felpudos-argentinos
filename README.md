@@ -5,9 +5,10 @@ personalizados con el logo del cliente.
 
 ## Estado
 
-Maqueta visual v1, pendiente de aprobación. Los textos, el logo y las imágenes de
-producto son propios; las fotos de trabajos reales las provee el cliente y se
-reemplazan sobre los espacios marcados en la sección *Rubros*.
+Maqueta visual v2, pendiente de aprobación. Los textos y el logo son propios.
+Ya están integradas las 7 fotos reales que mandó el cliente (`assets/img/fotos/`,
+procesadas con `tools/fotos.py`). **Faltan fotos de dos productos**: alfombras
+antideslizantes y tapetes antifatiga — esas dos tarjetas siguen con ilustración.
 
 ## Estructura
 

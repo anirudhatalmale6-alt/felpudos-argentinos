@@ -220,6 +220,9 @@ em{font-style:normal;color:var(--celeste-dk)}
 }
 .card__img{background:linear-gradient(160deg,#20272F,#12171C);padding:24px}
 .card__img img{border-radius:8px}
+/* foto real: ocupa toda la caja, sin margen ni esquinas redondeadas */
+.card__img--foto{padding:0}
+.card__img--foto img{border-radius:0;width:100%;aspect-ratio:3/2;object-fit:cover}
 .card__body{padding:26px 26px 28px;display:flex;flex-direction:column;flex:1}
 .card__kicker{
   margin:0 0 9px;font-family:Archivo,sans-serif;font-size:11.5px;font-weight:600;
@@ -268,6 +271,22 @@ em{font-style:normal;color:var(--celeste-dk)}
   display:grid;place-items:center;
 }
 .ph span{font-size:13px;color:var(--muted);letter-spacing:.05em}
+
+/* fotos de trabajos realizados */
+.shot{position:relative;margin:0;min-width:0;border-radius:var(--r);overflow:hidden;
+  border:1px solid var(--ink-3)}
+.shot img{width:100%;aspect-ratio:4/3;object-fit:cover;
+  transition:transform .5s var(--ease)}
+.shot:hover img{transform:scale(1.05)}
+.shot figcaption{
+  position:absolute;left:12px;bottom:12px;
+  background:rgba(18,23,28,.78);backdrop-filter:blur(6px);
+  color:var(--bone);border:1px solid rgba(255,255,255,.14);
+  font-family:Archivo,sans-serif;font-size:11.5px;font-weight:600;
+  text-transform:uppercase;letter-spacing:.13em;
+  padding:6px 12px;border-radius:100px;
+}
+.shot--wide img{aspect-ratio:16/10}
 .gallery__note{margin:16px 0 0;text-align:center;font-size:13.5px;color:var(--muted)}
 
 /* -------------------------------------------------------------- nosotros --- */
@@ -429,6 +448,7 @@ em{font-style:normal;color:var(--celeste-dk)}
   .rubros{grid-template-columns:repeat(3,1fr)}
   .gallery{grid-template-columns:1fr}
   .ph--wide{aspect-ratio:16/10}
+  .shot--wide img{aspect-ratio:4/3}
   .foot__in{grid-template-columns:1fr;gap:28px}
   .form{padding:22px}
 }
