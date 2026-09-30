@@ -6,9 +6,12 @@ personalizados con el logo del cliente.
 ## Estado
 
 Maqueta visual v2, pendiente de aprobación. Los textos y el logo son propios.
-Ya están integradas las 7 fotos reales que mandó el cliente (`assets/img/fotos/`,
-procesadas con `tools/fotos.py`). **Faltan fotos de dos productos**: alfombras
-antideslizantes y tapetes antifatiga — esas dos tarjetas siguen con ilustración.
+Ya están integradas las fotos reales que mandó el cliente (`assets/img/fotos/`,
+procesadas con `tools/fotos.py`). **Falta la foto de un producto**: alfombras
+antideslizantes — esa tarjeta sigue con ilustración.
+
+⚠️ `antifatiga3.jpeg` NO se usa: es un folleto publicitario de ViniloPlus, otra
+empresa, con su teléfono y su correo. No debe publicarse ni copiarse su texto.
 
 ## Estructura
 

@@ -23,6 +23,9 @@ JOBS = {
     "lluvia":     ("felpudosargentinos5-lluvia.jpeg", None,      (0.00, 0.38, 1.00, 1.00), (0.5, 0.5)),
     "supermerc":  ("felpudosargentinos6.jpeg",       None,       (0.00, 0.36, 1.00, 1.00), (0.5, 0.5)),
     "hutch":      ("felpudosargentinos7.jpeg",       None,       (0.02, 0.10, 0.98, 0.95), (0.5, 0.5)),
+    # antifatiga: se elige la 6 (pasillo en una cerveceria, sin personas ni marcas).
+    # NO se usa antifatiga3.jpeg: es un folleto de ViniloPlus, otra empresa.
+    "antifatiga": ("antifatiga6.jpeg",               None,       (0.00, 0.28, 1.00, 1.00), (0.5, 0.6)),
 }
 
 TARGET = (1200, 800)   # 3:2 para las tarjetas de producto
