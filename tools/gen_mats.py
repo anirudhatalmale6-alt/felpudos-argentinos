@@ -127,23 +127,6 @@ def p_lluvia(w=900, h=620):
     return finish(mat, w, h)
 
 
-def p_antideslizante(w=900, h=620):
-    """Alfombras antideslizantes — goma nervada de agarre."""
-    mat = base_mat(w, h, (23, 28, 34))
-    d = ImageDraw.Draw(mat)
-    # nervaduras: relieve marcado con luz arriba y sombra abajo
-    for y in range(24, h - 24, 16):
-        d.line([(24, y), (w - 24, y)], fill=(46, 55, 66), width=6)
-        d.line([(24, y + 4), (w - 24, y + 4)], fill=(14, 18, 23), width=3)
-    # franja de seguridad en los bordes
-    for yy in (16, h - 26):
-        d.rectangle([16, yy, w - 16, yy + 10], fill=CELESTE)
-    box = [int(w * .17), int(h * .28), int(w * .83), int(h * .72)]
-    d.rounded_rectangle(box, 12, fill=(26, 32, 39))
-    brand(d, w, int(h * 0.36), scale=1.25, color=BONE, accent=CELESTE)
-    return finish(mat, w, h)
-
-
 def p_antifatiga(w=900, h=620):
     """Tapetes antifatiga — espuma gruesa con borde biselado y relieve rombo."""
     mat = base_mat(w, h, (30, 36, 44))
@@ -224,7 +207,6 @@ if __name__ == "__main__":
     jobs = {
         "prod-logo.png": p_logo,
         "prod-lluvia.png": p_lluvia,
-        "prod-antideslizante.png": p_antideslizante,
         "prod-antifatiga.png": p_antifatiga,
         "prod-vinilico.png": p_vinilico,
         "prod-extraduty.png": p_extraduty,

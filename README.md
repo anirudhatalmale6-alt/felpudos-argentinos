@@ -6,19 +6,23 @@ personalizados con el logo del cliente.
 ## Estado
 
 Maqueta visual v2, pendiente de aprobación. Los textos y el logo son propios.
-Ya están integradas las fotos reales que mandó el cliente (`assets/img/fotos/`,
-procesadas con `tools/fotos.py`). **Falta la foto de un producto**: alfombras
-antideslizantes — esa tarjeta sigue con ilustración.
+Las cinco tarjetas de producto usan fotos reales del cliente
+(`assets/img/fotos/`, procesadas con `tools/fotos.py`). Ya no queda ninguna
+ilustración: `tools/gen_mats.py` sólo genera la pieza del hero.
 
-⚠️ `antifatiga3.jpeg` NO se usa: es un folleto publicitario de ViniloPlus, otra
-empresa, con su teléfono y su correo. No debe publicarse ni copiarse su texto.
+ViniloPlus es la MISMA empresa del cliente (confirmado 30/09/2026), no la
+competencia. Aun así no se publica el folleto `antifatiga3.jpeg` tal cual:
+lleva otro teléfono y otro correo que los del sitio.
+
+`antifatiga1.jpeg` y `antifatiga2.jpeg` no se usan: hay operarios con la cara
+visible y no consta su consentimiento.
 
 ## Estructura
 
 | Sección | Contenido |
 |---|---|
 | Hero | Propuesta de valor, CTA a WhatsApp, felpudo destacado |
-| 01 Productos | Los seis: con y sin logo, días de lluvia, antideslizantes, antifatiga, vinílicos, extra duty de alto tránsito |
+| 01 Productos | Las cinco: con y sin logo, días de lluvia, antifatiga y antideslizantes (una sola tarjeta), vinílicos, extra duty de alto tránsito |
 | 02 Rubros | 12 rubros + galería para fotos reales |
 | 03 Nosotros | Diferenciales de fábrica + métricas |
 | 04 Contacto | Datos directos + formulario |
@@ -30,7 +34,7 @@ index.html               página completa
 assets/css/style.css     estilos (un solo archivo, con variables de color)
 assets/js/main.js        menú móvil, animaciones al hacer scroll, formulario
 assets/fonts/            Archivo + Manrope autoalojadas (sin llamadas externas)
-assets/img/              logo, favicon y renders de los seis productos
+assets/img/              logo, favicon, pieza del hero y fotos/ del cliente
 tools/gen_mats.py        genera los renders de felpudo (Pillow)
 tools/shots.py           capturas de control (Playwright)
 ```

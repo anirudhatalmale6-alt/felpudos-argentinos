@@ -202,7 +202,10 @@ em{font-style:normal;color:var(--celeste-dk)}
 .sec__foot a{color:var(--celeste-dk);font-weight:700;white-space:nowrap}
 
 /* ------------------------------------------------------------- productos --- */
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+/* flex y no grid: con 5 tarjetas la ultima fila queda centrada en vez de
+   pegada a la izquierda con un hueco al lado. */
+.cards{display:flex;flex-wrap:wrap;justify-content:center;gap:26px}
+.cards>.card{flex:1 1 calc((100% - 52px)/3);max-width:calc((100% - 52px)/3)}
 .card{
   position:relative;
   background:#fff;border:1px solid rgba(18,23,28,.1);border-radius:var(--r);
@@ -247,6 +250,8 @@ em{font-style:normal;color:var(--celeste-dk)}
   padding:22px 10px;text-align:center;
   transition:border-color .25s,transform .25s var(--ease);
 }
+.rubros>li{min-width:0}
+.rubros span{overflow-wrap:anywhere}
 .rubros li:hover{border-color:var(--celeste);transform:translateY(-4px)}
 .rubros li:hover svg{color:var(--celeste)}
 .rubros svg{
@@ -397,7 +402,16 @@ em{font-style:normal;color:var(--celeste-dk)}
 @media (max-width:1040px){
   .hero__in{grid-template-columns:1fr;gap:40px}
   .hero__art{max-width:600px}
-  .cards{grid-template-columns:1fr;gap:20px}
+  .cards{gap:20px}
+  .cards>.card{flex-basis:100%;max-width:100%}
+
+  /* Entre 761 y 1040 px el menu seguia visible y el boton de presupuesto no
+     entraba: se salia del ancho y hacia scroll horizontal. El boton flotante
+     de WhatsApp cubre esa funcion en estos anchos. */
+  .nav__cta{display:none}
+  .nav__logo .lg{width:196px}
+  .nav__links{gap:22px}
+  .nav__links a{font-size:13.5px}
   .nosotros,.contacto{grid-template-columns:1fr;gap:44px}
   .rubros{grid-template-columns:repeat(4,1fr)}
   .gallery{grid-template-columns:1fr 1fr}
@@ -451,4 +465,10 @@ em{font-style:normal;color:var(--celeste-dk)}
   .shot--wide img{aspect-ratio:4/3}
   .foot__in{grid-template-columns:1fr;gap:28px}
   .form{padding:22px}
+}
+
+/* Telefonos angostos (320-400 px): con 3 columnas, "Supermercados" y
+   "Concesionarias" no entraban y empujaban la pagina a lo ancho. */
+@media (max-width:400px){
+  .rubros{grid-template-columns:repeat(2,1fr)}
 }
