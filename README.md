@@ -15,7 +15,7 @@ antideslizantes y tapetes antifatiga — esas dos tarjetas siguen con ilustraci�
 | Sección | Contenido |
 |---|---|
 | Hero | Propuesta de valor, CTA a WhatsApp, felpudo destacado |
-| 01 Productos | Los seis: con y sin logo, días de lluvia, antideslizantes, antifatiga, vinílicos, extra duty tipo 3M |
+| 01 Productos | Los seis: con y sin logo, días de lluvia, antideslizantes, antifatiga, vinílicos, extra duty de alto tránsito |
 | 02 Rubros | 12 rubros + galería para fotos reales |
 | 03 Nosotros | Diferenciales de fábrica + métricas |
 | 04 Contacto | Datos directos + formulario |

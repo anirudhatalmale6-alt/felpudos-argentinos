@@ -186,7 +186,7 @@ def p_vinilico(w=900, h=620):
 
 
 def p_extraduty(w=900, h=620):
-    """Alfombras extra duty tipo 3M — rizo denso de alto transito."""
+    """Alfombras extra duty de alto transito — rizo denso."""
     mat = base_mat(w, h, (19, 23, 29))
     d = ImageDraw.Draw(mat)
     # rizo cerrado: puntos densos en tresbolillo
